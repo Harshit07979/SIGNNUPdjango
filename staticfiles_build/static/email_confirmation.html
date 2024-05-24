@@ -1,0 +1,11 @@
+{% autoescape off %}
+
+Welcom to signup practice session
+
+HELLO {{ name }}!
+
+Please confirm your email ny clicking on the folloing 
+
+Confrimation Link: http://{{ domain }}{% url 'activate' uidb64=uid token=token %} 
+
+{% endautoescape off %}
