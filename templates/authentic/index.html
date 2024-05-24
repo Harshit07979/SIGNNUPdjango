@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Authentic</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" href="">
+    <style>
+        .custom-button {
+            display: block;
+            border-radius: border-box;
+            padding: 60px;
+            backdrop-filter: brightness(70%);
+            flex-direction: column;
+            display: flex;
+            gap: 15px;
+
+            
+            width: 100%; /* Set the width */
+            height: 100%; /* Set the height */
+            
+        }
+
+        .custom-button button {
+            background-color: #03A89E; /* Change button color */
+            color: rgb(206, 231, 17); /* Text color */
+            border: 5px; /* Remove default button border */
+            cursor: pointer;
+            text-decoration: none;
+            text-align: center;
+            font-size: 25px; /* Adjust font size */
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="login" style="border:1px solid black ;width: 1200px;height: 900px;background: url(https://t4.ftcdn.net/jpg/01/19/11/55/360_F_119115529_mEnw3lGpLdlDkfLgRcVSbFRuVl6sMDty.jpg);color: white;border-radius: 20px;box-shadow: 0px 0px 20px rgba(0,0,0,0.75);background-size: cover;background-position: center;overflow: hidden;  ">
+        <form class="custom-button">
+
+            {% for message in messages %}
+            <div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
+            <strong>Message</strong> {{ message }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>   
+            </div>
+            {% endfor %}
+
+
+
+            <h1>Welcome to signup page</h1>
+            <h2>Please create account</h2>
+
+
+            {% if user.is_authenticated %}
+                 <h3>HELLO {{fname}} !!!</h3>
+                 <h3>YOU ARE LOGGED IN</h3>
+            <!-- if user gets logged this get activate -->
+
+
+                 
+                 <button type="submit" ><a href="/signout">SIGNOUT</a></button>>
+            {% else %}
+                 <label>LOGIN</label>
+                 <button type="submit" ><a href="/signup"> SIGNUP</a></button>
+                 <button type="submit" ><a href="/signin">SIGNIN</a></button>
+                 
+            {% endif %}
+
+
+        </form>
+
+
+
+
+    </div>
+    
+
+    
+    <script src="" async defer></script>
+</body>
+</html>    

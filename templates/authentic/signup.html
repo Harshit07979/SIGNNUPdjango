@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" href="">
+    <style>
+        /* Make input sections' borders circular */
+        input[type="text"],
+        input[type="email"],
+        input[type="password"] {
+            border-radius: 20px;
+        }
+
+        form {
+            display: block;
+            box-sizing: border-box;
+            padding: 60px;
+            width: 100%;
+            backdrop-filter: brightness(40%);
+            flex-direction: column;
+            display: flex;
+            gap: 8px;
+
+
+
+        }
+
+        h1 {
+            font-weight: normal;
+            font-size: 130px;
+            text-shadow: 0px 0px 2px rgba(0,0,0,0.5);
+            margin-bottom: 40px;
+        }
+
+        label {
+            color: rgba(255, 255,255,0.8);
+            text-transform: uppercase;
+            font-size: 25px;
+            letter-spacing: 2px;
+            padding-left: 10px;
+        }
+
+        input {
+            background: rgba(255,255,255,0.45);
+            height: 45px;
+            line-height: 45px;
+            border-radius: 10px;
+            padding: 0px 10px;
+            border: none;
+            margin-bottom: 5px;
+            color: rgb(252, 250, 250);
+        }
+
+        button {
+            background: rgb(45,126,231);
+            height: 40px;
+            line-height: 40px;
+            border-radius: 40px;
+            border: none;
+            margin: 10px 0px;
+            box-shadow: 0px 0px 5px rgba(0,0,0,0.3);
+            color: white;
+            font-size: 25px;
+            text-transform: uppercase;
+        }
+
+        input::placeholder {
+            font-size: 25px;
+            width: 300px;
+            color: rgb(15, 15, 15);
+        }
+    </style>
+</head>
+<body>
+    {% for message in messages %}
+    <div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
+    <strong>Message</strong> {{ message }}
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+    </button>   
+    </div>
+    {% endfor %}
+
+
+    <h1>SIGNUP!!</h1>
+    
+    <div class="sign1" style="border:1px solid black ;width: 1200px;height: 900px;background: url(https://t4.ftcdn.net/jpg/01/19/11/55/360_F_119115529_mEnw3lGpLdlDkfLgRcVSbFRuVl6sMDty.jpg);color: white;border-radius: 20px;box-shadow: 0px 0px 20px rgba(0,0,0,0.75);background-size: cover;background-position: center;overflow: hidden;  ">
+        <form action="/signup/" method="post">
+            {% csrf_token %}   
+                <label for=" ">USERNAME</label>
+                <input type="text" name="username" id="username" placeholder="create your username" required style="font-size: 18px;">
+                <br>
+        
+                <label for=" ">FIRSTNAME</label>
+                <input type="text" name="fname" id="fname" placeholder="Enter your firstname" required style="font-size: 18px;">
+                <br>
+        
+                <label for=" ">LASTNAME</label>
+                <input type="text" name="lname" id="lname" placeholder="Enter your lastname" required style="font-size: 18px;">
+                <br>
+        
+                <label for=" ">E_MAIL</label>
+                <input type="email" name="email" id="email" placeholder="Enter your email" required style="font-size: 18px;">
+                <br>
+        
+                <label for=" ">PASSWORD</label>
+                <input type="password" name="pass1" id="passwd" placeholder="Create your password" required style="font-size: 18px;">
+                <br>
+        
+                <label for=" ">CONFIRM PASSWORD</label>
+                <input type="password" name="pass2" id="passwd1" placeholder="Enter your password again" required style="font-size: 18px;">
+                <br>
+        
+                <button type="submit">SIGNUP </button>
+                 
+        
+            </form>
+    </div>
+    <script src="" async defer></script>
+    
+</body>
+</html>
