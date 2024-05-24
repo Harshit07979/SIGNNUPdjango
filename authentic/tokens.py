@@ -1,5 +1,6 @@
 
 from tokenize import generate_tokens
+
 from django.contrib.auth.tokens import PasswordResetTokenGenerator
 
 from six import text_type
@@ -9,4 +10,6 @@ class TokenGenerator(PasswordResetTokenGenerator):
         return (text_type(user.pk) + text_type(timestamp) + text_type(user.is_active)).encode('utf-8')
     
 
-generate_token = TokenGenerator()
+def generate_token(user):
+    token_generator = TokenGenerator()
+    return token_generator.make_token(user)
