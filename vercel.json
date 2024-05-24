@@ -5,7 +5,7 @@
         {
            "src": "logpy/wsgi.py",
            "use": "@vercel/python",
-           "config": { "maxLambdaSize": "15mb", "runtime": "python3.12" }
+           "config": { "maxLambdaSize": "15mb", "runtime": "python3.8" }
  
         },
         {
@@ -22,7 +22,7 @@
         "dest":"/static/$1"
         },
         {
-        "src": "/( .* )",
+        "src": "/(.*)",
         "dest": "logpy/wsgi.py"
         }
     ]
