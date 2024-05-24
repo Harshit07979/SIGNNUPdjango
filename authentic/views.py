@@ -13,7 +13,7 @@ from django.utils.encoding import force_bytes, force_str
 
 from django.core.mail import EmailMessage, send_mail
 from django.utils.http import urlsafe_base64_decode, urlsafe_base64_encode
-from .tokens import generate_token
+from .tokens import TokenGenerator, generate_token
 
 
 
@@ -74,7 +74,7 @@ def signup(request):
             'name': myuser.first_name,
             'domain': current_site.domain,
             'uid':urlsafe_base64_encode(force_bytes(myuser.pk)),
-            'token':generate_token.make_token(myuser),
+            'token':generate_token(myuser),
         })
         email = EmailMessage(
              email_subject,
@@ -124,7 +124,7 @@ def activate(request,uidb64,token):
     except(TypeError,ValueError,OverflowError,User.DoesNotExist):
         myuser =None
 
-    if myuser is not None and generate_token.check_token(myuser, token):
+    if myuser is not None and TokenGenerator().check_token(myuser, token):
         myuser.is_active= True
         myuser.save()
         login(request,myuser)
